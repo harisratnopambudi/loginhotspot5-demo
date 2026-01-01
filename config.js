@@ -10,7 +10,7 @@
 var BUYER_CONFIG = {
     // License Key - Gunakan 'DEMO-VALID-KEY' untuk mode demo
     // License key valid harus 28 karakter: A-Z, 0-9, @#$%&*-_+=!?
-    licenseKey: "#1DUQNJ8%LYZ7_07WM$T5YJ$TL-K",
+    licenseKey: "DEMO-VALID-KEY",
 
     // Business Information
     businessName: "AshrafHotspot",
