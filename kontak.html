@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Kontak - Hotspot</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-hero svg {
+            width: 48px;
+            height: 48px;
+            fill: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-hero h1 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-hero p {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: var(--spacing-md);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        .whatsapp-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform var(--transition-fast);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-icon.facebook {
+            background: #1877F2;
+        }
+
+        .social-icon.telegram {
+            background: #0088CC;
+        }
+
+        .social-icon.email {
+            background: var(--info-color);
+        }
+
+        .social-link span {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .info-section {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-section h3 {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .info-section h3 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-color);
+        }
+
+        .info-section p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+
+        .hours-list {
+            margin-top: var(--spacing-md);
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: var(--font-size-sm);
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+
+        .hours-item .day {
+            color: var(--text-secondary);
+        }
+
+        .hours-item .time {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        /* Theme Switch CSS */
+        .theme-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-switch::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .theme-switch {
+            background: #6366f1;
+            border-color: #a5b4fc;
+        }
+
+        .dark-mode .theme-switch::after {
+            transform: translateX(20px);
+            background: #fbbf24;
+        }
+
+        .header-left {
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header-actions {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+    </style>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="theme-switch" onclick="toggleDarkMode()" title="Toggle Dark Mode"></div>
+                </div>
+                <div class="header-logo">
+                    <span id="businessName">BADARO.ID</span>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="location.href='kontak.html'" title="Notifikasi">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                        </svg>
+                        <span class="notification-badge">1</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Contact Hero -->
+                <div class="contact-hero">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <h1>Hubungi Kami</h1>
+                    <p>Tim kami siap membantu Anda 24/7</p>
+                </div>
+
+                <!-- WhatsApp Button -->
+                <a href="#" class="whatsapp-btn" id="whatsappBtn">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    <span>Chat via WhatsApp</span>
+                </a>
+
+                <!-- Contact Cards -->
+                <a href="#" class="contact-card" id="emailLink">
+                    <div class="contact-icon email">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p id="emailAddress">admin@badaro.id</p>
+                    </div>
+                </a>
+
+                <a href="#" class="contact-card" id="phoneLink">
+                    <div class="contact-icon purple">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Telepon</h3>
+                        <p id="phoneNumber">+62 812-3456-7890</p>
+                    </div>
+                </a>
+
+
+
+                <!-- Operating Hours -->
+                <div class="info-section">
+                    <h3>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                        </svg>
+                        Jam Operasional
+                    </h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span class="day">Senin - Jumat</span>
+                            <span class="time">08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Sabtu</span>
+                            <span class="time">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Minggu</span>
+                            <span class="time">10:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="info-section">
+                    <h3>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Alamat
+                    </h3>
+                    <p>Jl. Contoh Alamat No. 123<br>Kota, Provinsi 12345<br>Indonesia</p>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="footer-divider"></div>
+                    <p id="footerText">Support by PT. Jembatan Data Pangrango</p>
+                    <p id="designerText">Design by BADARO.ID</p>
+                </footer>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-content">
+                <a href="login.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                    <span>Beranda</span>
+                </a>
+                <a href="paket.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" />
+                    </svg>
+                    <span>Paket</span>
+                </a>
+                <a href="faq.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 14h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    <span>FAQ</span>
+                </a>
+                <a href="kontak.html" class="bottom-nav-item active">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>Kontak</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof HOTSPOT_CONFIG !== 'undefined') {
+                document.getElementById('businessName').textContent = HOTSPOT_CONFIG.businessName;
+                document.getElementById('footerText').textContent = HOTSPOT_CONFIG.footerText;
+                document.getElementById('designerText').textContent = HOTSPOT_CONFIG.designerText;
+
+                // Set contact links
+                var phone = HOTSPOT_CONFIG.adminPhone;
+                var email = HOTSPOT_CONFIG.adminEmail;
+
+                document.getElementById('whatsappBtn').href = 'https://wa.me/' + phone + '?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20paket%20WiFi';
+                document.getElementById('phoneNumber').textContent = '+' + phone.replace(/(\d{2})(\d{3})(\d{4})(\d{4})/, '$1 $2-$3-$4');
+                document.getElementById('phoneLink').href = 'tel:+' + phone;
+                document.getElementById('emailAddress').textContent = email;
+                document.getElementById('emailLink').href = 'mailto:' + email;
+
+                // Social media
+                if (HOTSPOT_CONFIG.socialMedia) {
+                    if (HOTSPOT_CONFIG.socialMedia.instagram) {
+                        document.getElementById('instagramLink').href = 'https://instagram.com/' + HOTSPOT_CONFIG.socialMedia.instagram;
+                    }
+                    if (HOTSPOT_CONFIG.socialMedia.facebook) {
+                        document.getElementById('facebookLink').href = 'https://facebook.com/' + HOTSPOT_CONFIG.socialMedia.facebook;
+                    }
+                    if (HOTSPOT_CONFIG.socialMedia.telegram) {
+                        document.getElementById('telegramLink').href = 'https://t.me/' + HOTSPOT_CONFIG.socialMedia.telegram;
+                    }
+                }
+
+                if (HOTSPOT_CONFIG.enableDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        }
+    </script>
+</body>
+
+</html>

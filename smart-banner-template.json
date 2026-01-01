@@ -1,0 +1,268 @@
+{
+    "name": "Smart Banner Template",
+    "version": "1.0",
+    "author": "Haris DevLab",
+    "features": [
+        "time-greeting",
+        "gaming-mode",
+        "streaming-mode",
+        "quote-mode",
+        "holiday-auto"
+    ],
+    "css": {
+        "gradients": {
+            "grad-1": "background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);",
+            "grad-2": "background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);",
+            "grad-3": "background: linear-gradient(135deg, #0f172a 0%, #334155 100%); border: 1px solid rgba(255,255,255,0.1);",
+            "grad-4": "background: linear-gradient(135deg, #10b981 0%, #059669 100%);",
+            "grad-netflix": "background: linear-gradient(135deg, #E50914 0%, #87070d 100%); box-shadow: 0 4px 15px rgba(229,9,20,0.4);",
+            "grad-morning": "background: linear-gradient(135deg, #fce38a 0%, #f38181 100%); color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.15);",
+            "grad-noon": "background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);",
+            "grad-afternoon": "background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);",
+            "grad-night": "background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border: 1px solid rgba(255,255,255,0.1);",
+            "grad-gaming": "background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); border: 1px solid #00ff88;",
+            "grad-streaming": "background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%); color: #4a4a4a;",
+            "grad-quote": "background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #004d40;",
+            "grad-holiday": "background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%); color: #8a6e00;",
+            "grad-national": "background: linear-gradient(135deg, #ff0000 0%, #ff4d4d 50%, #ffffff 50%, #f0f0f0 100%); color: #000;"
+        },
+        "components": {
+            "bannerSlide": ".banner-slide { width: 100%; height: 100%; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; overflow: hidden; color: white; }",
+            "bannerContent": ".banner-content h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); } .banner-content p { font-size: 1.05rem; opacity: 0.95; margin-bottom: 14px; }",
+            "bannerBadge": ".banner-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }",
+            "slideshowContainer": ".slideshow-container { width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 24px; background: #0f172a; }",
+            "slidesWrapper": ".slides-wrapper { position: relative; width: 100%; height: 140px; overflow: hidden; }",
+            "glitchAnimation": "@keyframes glitch-entry { 0% { transform: translate(0); opacity: 0; } 10% { opacity: 1; transform: translate(-5px, 5px); } 20% { transform: translate(5px, -5px); } 100% { transform: translate(0); opacity: 1; } }"
+        }
+    },
+    "htmlElements": {
+        "slideId": "greetingSlide",
+        "titleId": "greetTitle",
+        "descId": "greetDesc",
+        "badgeId": "greetBadge"
+    },
+    "rotationInterval": 15000,
+    "holidays": {
+        "1-1": {
+            "title": "HAPPY NEW YEAR 🎉",
+            "desc": "Semoga tahun ini lebih baik & koneksi makin ngebut!",
+            "class": "grad-holiday",
+            "badge": "Tahun Baru"
+        },
+        "14-2": {
+            "title": "HAPPY VALENTINE 💖",
+            "desc": "Sebarkan kasih sayang ke orang tersayang.",
+            "class": "grad-quote",
+            "badge": "Valentine"
+        },
+        "21-4": {
+            "title": "SELAMAT HARI KARTINI 🇮🇩",
+            "desc": "Habis Gelap Terbitlah Terang.",
+            "class": "grad-national",
+            "badge": "Ibu Kartini"
+        },
+        "1-5": {
+            "title": "SELAMAT HARI BURUH",
+            "desc": "Istirahatlah sejenak, nikmati hasil kerjamu.",
+            "class": "grad-holiday",
+            "badge": "May Day"
+        },
+        "2-5": {
+            "title": "HARDIKNAS 🎓",
+            "desc": "Ing Ngarsa Sung Tuladha.",
+            "class": "grad-national",
+            "badge": "Pendidikan"
+        },
+        "20-5": {
+            "title": "KEBANGKITAN NASIONAL 🇮🇩",
+            "desc": "Bangkit! Kejar mimpimu.",
+            "class": "grad-national",
+            "badge": "Harkitnas"
+        },
+        "1-6": {
+            "title": "HARI LAHIR PANCASILA 🇮🇩",
+            "desc": "Berbeda-beda tetapi tetap satu.",
+            "class": "grad-national",
+            "badge": "Pancasila"
+        },
+        "17-8": {
+            "title": "DIRGAHAYU RI 🇮🇩",
+            "desc": "Merdeka Internetnya, Merdeka Belajarnya!",
+            "class": "grad-national",
+            "badge": "HUT RI"
+        },
+        "2-10": {
+            "title": "SELAMAT HARI BATIK 🇮🇩",
+            "desc": "Bangga buatan Indonesia.",
+            "class": "grad-holiday",
+            "badge": "Hari Batik"
+        },
+        "5-10": {
+            "title": "HUT TNI 🇮🇩",
+            "desc": "Bersama Rakyat TNI Kuat.",
+            "class": "grad-national",
+            "badge": "Dirgahayu TNI"
+        },
+        "28-10": {
+            "title": "SUMPAH PEMUDA 🇮🇩",
+            "desc": "Satu Nusa, Satu Bangsa, Satu Kuota.",
+            "class": "grad-national",
+            "badge": "Semangat Pemuda"
+        },
+        "10-11": {
+            "title": "HARI PAHLAWAN 🇮🇩",
+            "desc": "Jadilah pahlawan bagi keluargamu.",
+            "class": "grad-national",
+            "badge": "10 November"
+        },
+        "25-11": {
+            "title": "SELAMAT HARI GURU 🎓",
+            "desc": "Terima kasih Guruku.",
+            "class": "grad-quote",
+            "badge": "Hari Guru"
+        },
+        "22-12": {
+            "title": "SELAMAT HARI IBU ❤️",
+            "desc": "Terima kasih untuk kasih sayang.",
+            "class": "grad-quote",
+            "badge": "Hari Ibu"
+        },
+        "25-12": {
+            "title": "MERRY CHRISTMAS 🎄",
+            "desc": "Damai di bumi, damai di hati.",
+            "class": "grad-holiday",
+            "badge": "Natal"
+        }
+    },
+    "modes": {
+        "timeGreeting": {
+            "weight": 0.4,
+            "morning": {
+                "hours": [
+                    5,
+                    11
+                ],
+                "class": "grad-morning",
+                "title": "Selamat Pagi 🌅",
+                "desc": "Awali hari dengan Semangat & Koneksi Lancar"
+            },
+            "noon": {
+                "hours": [
+                    11,
+                    15
+                ],
+                "class": "grad-noon",
+                "title": "Selamat Siang ☀️",
+                "desc": "Jangan lupa Istirahat & Makan Siang"
+            },
+            "afternoon": {
+                "hours": [
+                    15,
+                    18
+                ],
+                "class": "grad-afternoon",
+                "title": "Selamat Sore 🌇",
+                "desc": "Santai sejenak menikmati Senja & Kopi"
+            },
+            "night": {
+                "hours": [
+                    18,
+                    5
+                ],
+                "class": "grad-night",
+                "title": "Selamat Malam 🌙",
+                "desc": "Istirahatlah, tapi Internet Jalan Terus 24 Jam"
+            }
+        },
+        "gaming": {
+            "weight": 0.2,
+            "class": "grad-gaming",
+            "title": "GAMER MODE",
+            "desc": "Ping Stabil Anti Lag • Auto Headshot",
+            "badge": "Gas Mabar!"
+        },
+        "streaming": {
+            "weight": 0.2,
+            "class": "grad-streaming",
+            "title": "NO BUFFER",
+            "desc": "Nonton Drakor & YouTube Resolusi 4K",
+            "badge": "Enjoy Movie"
+        },
+        "quote": {
+            "weight": 0.2,
+            "class": "grad-quote",
+            "title": "DAILY QUOTE",
+            "badge": "Semangat!",
+            "quotes": [
+                "Rejeki gak akan tertukar, tapi kuota bisa habis.",
+                "Kerja keras itu perlu, wifi kencang itu harus.",
+                "Tetap tenang dan hubungkan ke Hotspot.",
+                "Dunia maya lebih indah kalau koneksinya lancar."
+            ]
+        }
+    },
+    "packagePromo": {
+        "rotationInterval": 12000,
+        "slideId": "packageSlide",
+        "titleId": "pkgTitle",
+        "descId": "pkgDesc",
+        "badgeId": "pkgBadge",
+        "cssClasses": [
+            "grad-1",
+            "grad-2",
+            "grad-3",
+            "grad-4",
+            "grad-netflix"
+        ],
+        "packages": [
+            {
+                "name": "PAKET 12 JAM",
+                "detail": "Internet Kilat 12 Jam Nonstop",
+                "price": "Hanya Rp 2.000",
+                "color": "grad-1"
+            },
+            {
+                "name": "PAKET HARIAN",
+                "detail": "Internet Puas 24 Jam Unlimited",
+                "price": "Best Seller Rp 3.000",
+                "color": "grad-2"
+            },
+            {
+                "name": "PAKET 2 HARI",
+                "detail": "Masa aktif 48 Jam Lebih Lama",
+                "price": "Rp 5.000",
+                "color": "grad-4"
+            },
+            {
+                "name": "HEMAT MINGGUAN",
+                "detail": "Aktif 7 Hari Anti Repot",
+                "price": "Rp 15.000",
+                "color": "grad-3"
+            },
+            {
+                "name": "BULANAN HEMAT",
+                "detail": "Full 30 Hari Internet Jalan Terus",
+                "price": "Rp 50.000",
+                "color": "grad-1"
+            },
+            {
+                "name": "PAKET SHARING",
+                "detail": "Bisa untuk 3 Device Sekaligus",
+                "price": "Rp 65.000 / Bulan",
+                "color": "grad-2"
+            },
+            {
+                "name": "SHARING KELUARGA",
+                "detail": "Max 5 Device Lebih Murah",
+                "price": "Rp 100.000 / Bulan",
+                "color": "grad-4"
+            }
+        ]
+    },
+    "slideshow": {
+        "interval": 4000,
+        "slideClass": "slide",
+        "activeClass": "active"
+    },
+    "htmlTemplate": "<div class='slideshow-container'><div class='slides-wrapper'><div class='slide active'><div class='banner-slide grad-morning' id='greetingSlide'><div class='banner-content'><h3 id='greetTitle'>Selamat Pagi</h3><p id='greetDesc'>Awali hari dengan Semangat</p></div><span class='banner-badge' id='greetBadge'>Badge</span></div></div><div class='slide'><div class='banner-slide grad-1' id='packageSlide'><div class='banner-content'><h3 id='pkgTitle'>PAKET HARIAN</h3><p id='pkgDesc'>Internet Puas 24 Jam</p></div><span class='banner-badge' id='pkgBadge'>Rp 3.000</span></div></div></div></div>"
+}

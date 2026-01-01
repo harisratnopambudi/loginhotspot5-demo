@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="refresh" content="0; url=status.html">
+    <title>Redirect - Hotspot</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .redirect-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .redirect-card {
+            text-align: center;
+            max-width: 320px;
+        }
+
+        .redirect-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-lg);
+            animation: spin 1s linear infinite;
+        }
+
+        .redirect-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--primary-color);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="redirect-container">
+        <div class="redirect-card">
+            <div class="redirect-icon">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                </svg>
+            </div>
+            <h2 style="color: var(--text-primary); margin-bottom: var(--spacing-sm);">Mengalihkan...</h2>
+            <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                Anda akan dialihkan ke halaman login. Jika tidak otomatis,
+                <a href="status.html" style="color: var(--primary-color);">klik di sini</a>.
+            </p>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        if (typeof HOTSPOT_CONFIG !== 'undefined' && HOTSPOT_CONFIG.enableDarkMode) {
+            document.body.classList.add('dark-mode');
+        }
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+
+</html>

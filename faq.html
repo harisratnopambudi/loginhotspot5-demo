@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>FAQ - Hotspot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* Theme Switch CSS */
+        .theme-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-switch::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .theme-switch {
+            background: #6366f1;
+            border-color: #a5b4fc;
+        }
+
+        .dark-mode .theme-switch::after {
+            transform: translateX(20px);
+            background: #fbbf24;
+        }
+
+        .header-left {
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header-actions {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+    </style>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="theme-switch" onclick="toggleDarkMode()" title="Toggle Dark Mode"></div>
+                </div>
+                <div class="header-logo">
+                    <span id="businessName">BADARO.ID</span>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="location.href='kontak.html'" title="Notifikasi">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                        </svg>
+                        <span class="notification-badge">1</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Page Title -->
+                <div class="card text-center">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="var(--primary-color)"
+                        style="margin: 0 auto var(--spacing-md);">
+                        <path
+                            d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" />
+                    </svg>
+                    <h1 class="card-subtitle">Pertanyaan Umum</h1>
+                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">Temukan jawaban untuk
+                        pertanyaan yang sering diajukan</p>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Bagaimana cara login ke WiFi?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>1. Sambungkan perangkat Anda ke jaringan WiFi yang tersedia<br>
+                                2. Buka browser dan halaman login akan muncul otomatis<br>
+                                3. Masukkan kode voucher yang telah Anda beli<br>
+                                4. Klik tombol "Login" dan Anda akan terhubung ke internet</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Bagaimana cara membeli voucher?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Anda dapat membeli voucher melalui:<br>
+                                - Hubungi admin via WhatsApp<br>
+                                - Pembayaran via QRIS<br>
+                                - Transfer bank<br><br>
+                                Setelah pembayaran dikonfirmasi, kode voucher akan dikirimkan ke Anda.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Voucher saya tidak bisa digunakan?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Jika voucher tidak bisa digunakan, coba langkah berikut:<br>
+                                1. Pastikan kode voucher diketik dengan benar (perhatikan huruf besar/kecil)<br>
+                                2. Pastikan voucher belum digunakan sebelumnya<br>
+                                3. Pastikan voucher belum kadaluarsa<br>
+                                4. Coba refresh halaman login<br><br>
+                                Jika masih bermasalah, hubungi admin untuk bantuan.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Berapa kecepatan internet yang tersedia?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Kecepatan internet bervariasi tergantung paket yang Anda pilih. Umumnya:<br>
+                                - Paket reguler: Up to 10 Mbps<br>
+                                - Paket premium: Up to 25 Mbps<br>
+                                - Paket unlimited: Up to 50 Mbps<br><br>
+                                Kecepatan aktual dapat bervariasi tergantung kondisi jaringan dan jumlah pengguna.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Apakah bisa menggunakan di banyak perangkat?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Satu voucher hanya dapat digunakan untuk satu perangkat dalam satu waktu. Jika Anda ingin
+                                menggunakan di beberapa perangkat, Anda perlu membeli voucher terpisah untuk setiap
+                                perangkat.<br><br>
+                                Untuk kebutuhan multi-device, silakan hubungi admin untuk paket khusus.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Bagaimana cara logout dari WiFi?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Untuk logout dari WiFi:<br>
+                                1. Buka halaman status dengan mengetik alamat IP router di browser<br>
+                                2. Klik tombol "Logout" di halaman status<br>
+                                3. Atau disconnect dari jaringan WiFi<br><br>
+                                Waktu voucher akan tetap berjalan jika Anda tidak melakukan logout.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Apakah ada trial/coba gratis?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Ya! Kami menyediakan akses trial gratis untuk pengguna baru:<br>
+                                - Durasi: 15 menit<br>
+                                - Kecepatan: Terbatas<br>
+                                - Frekuensi: Sekali per perangkat per hari<br><br>
+                                Untuk mengaktifkan trial, klik tombol "Coba Gratis" di halaman login.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 8 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Metode pembayaran apa saja yang tersedia?
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Kami menerima berbagai metode pembayaran:<br>
+                                - QRIS (semua e-wallet dan bank)<br>
+                                - Transfer Bank (BCA, BNI, BRI, Mandiri)<br>
+                                - OVO, GoPay, DANA, ShopeePay<br>
+                                - Tunai (pembayaran langsung)<br><br>
+                                Hubungi admin untuk informasi rekening dan konfirmasi pembayaran.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Still Have Questions -->
+                <div class="card text-center">
+                    <h3 style="margin-bottom: var(--spacing-md);">Masih Ada Pertanyaan?</h3>
+                    <p
+                        style="color: var(--text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--spacing-lg);">
+                        Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan lain
+                    </p>
+                    <a href="kontak.html" class="btn btn-primary btn-block">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        Hubungi Kami
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="footer-divider"></div>
+                    <p id="footerText">Support by PT. Jembatan Data Pangrango</p>
+                    <p id="designerText">Design by BADARO.ID</p>
+                </footer>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-content">
+                <a href="login.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                    <span>Beranda</span>
+                </a>
+                <a href="paket.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" />
+                    </svg>
+                    <span>Paket</span>
+                </a>
+                <a href="faq.html" class="bottom-nav-item active">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 14h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    <span>FAQ</span>
+                </a>
+                <a href="kontak.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>Kontak</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof HOTSPOT_CONFIG !== 'undefined') {
+                document.getElementById('businessName').textContent = HOTSPOT_CONFIG.businessName;
+                document.getElementById('footerText').textContent = HOTSPOT_CONFIG.footerText;
+                document.getElementById('designerText').textContent = HOTSPOT_CONFIG.designerText;
+
+                if (HOTSPOT_CONFIG.enableDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleAccordion(header) {
+            var item = header.parentElement;
+            var isActive = item.classList.contains('active');
+
+            // Close all other items
+            document.querySelectorAll('.accordion-item').forEach(function (el) {
+                el.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+{
+    "name": "License Key Validation Template",
+    "version": "1.0",
+    "author": "Haris DevLab",
+    "description": "Template validasi license key untuk portal hotspot",
+    "config": {
+        "demoKey": "DEMO-VALID-KEY",
+        "keyFormat": "^[A-Z0-9@#$%&*\\-_+=!?]{28}$",
+        "adminPhone": "6287784477751"
+    },
+    "demoMode": {
+        "enabled": true,
+        "activeTime": 15,
+        "cooldownTime": 60,
+        "messages": {
+            "activated": "DEMO MODE ACTIVATED",
+            "timer": "DEMO MODE",
+            "recovering": "RECOVERING",
+            "cooldown": "Mode Demo: Sedang cooling down...",
+            "ready": "DEMO READY"
+        }
+    },
+    "responses": {
+        "valid": {
+            "action": "showMainContent",
+            "elements": {
+                "show": [
+                    "mainContent",
+                    "loginCard"
+                ],
+                "hide": [
+                    "blockScreen"
+                ]
+            }
+        },
+        "invalid": {
+            "action": "showBlockScreen",
+            "elements": {
+                "show": [
+                    "blockScreen"
+                ],
+                "hide": [
+                    "mainContent"
+                ]
+            },
+            "display": {
+                "title": "Akses Ditolak",
+                "message": "Portal ini tidak memiliki lisensi yang valid.<br>Silakan hubungi administrator.",
+                "buttonText": "Hubungi Admin",
+                "buttonLink": "https://wa.me/6287784477751",
+                "icon": "warning"
+            }
+        },
+        "tampered": {
+            "action": "showBlockScreen",
+            "display": {
+                "title": "Akses Ditolak",
+                "message": "File portal telah dimodifikasi (E01). Gunakan versi asli.",
+                "buttonText": "Hubungi Admin",
+                "buttonLink": "https://wa.me/6287784477751",
+                "icon": "warning"
+            }
+        }
+    },
+    "css": {
+        "blockScreen": ".block-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; }",
+        "blockCard": ".block-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px 32px; text-align: center; max-width: 420px; width: 100%; }",
+        "blockIcon": ".block-icon { width: 80px; height: 80px; background: rgba(239,68,68,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; border: 1px solid rgba(239,68,68,0.2); }",
+        "blockTitle": ".block-title { font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 12px; }",
+        "blockMessage": ".block-message { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }",
+        "demoTimer": ".demo-timer { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.4); color: #fcd34d; padding: 8px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; z-index: 9999; display: flex; align-items: center; gap: 8px; }",
+        "demoTimerUrgent": ".demo-timer.urgent { color: #ef4444; background: rgba(239,68,68,0.2); border-color: rgba(239,68,68,0.4); animation: pulse-red 1s infinite; }",
+        "cooldownOverlay": ".cooldown-overlay { position: absolute; inset: 0; background: rgba(15,23,42,0.95); border-radius: inherit; display: none; align-items: center; justify-content: center; text-align: center; padding: 14px; } .cooldown-overlay.show { display: flex; }",
+        "toast": ".toast { background: rgba(30,41,59,0.95); color: white; padding: 12px 20px; border-radius: 50px; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; } .toast.warning { border-color: rgba(245,158,11,0.5); color: #fcd34d; } .toast.error { border-color: rgba(239,68,68,0.5); color: #fca5a5; } .toast.success { border-color: rgba(34,197,94,0.5); color: #86efac; }"
+    },
+    "html": {
+        "blockScreen": "<div id=\"blockScreen\" class=\"block-screen hidden\"><div class=\"block-card\"><div class=\"block-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" style=\"width:40px;height:40px;color:#ef4444;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z\"/></svg></div><h2 class=\"block-title\">Akses Ditolak</h2><p class=\"block-message\">Portal ini tidak memiliki lisensi yang valid.<br>Silakan hubungi administrator.</p><a href=\"https://wa.me/6287784477751\" target=\"_blank\" class=\"btn-whatsapp\">Hubungi Admin</a></div></div>",
+        "demoTimer": "<div id=\"demoTimerDisplay\" class=\"demo-timer hidden\"><svg style=\"width:16px;height:16px;\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z\"/></svg><span id=\"demoTimerText\">DEMO MODE: 15s</span></div>",
+        "toastContainer": "<div id=\"toastContainer\" class=\"toast-container\"></div>",
+        "cooldownOverlay": "<div id=\"cooldownOverlay\" class=\"cooldown-overlay\"><span class=\"cooldown-text\">...</span></div>"
+    },
+    "script": {
+        "validation": "function validateLicense(key) { if (!key) return { valid: false, type: 'empty' }; const trimmedKey = key.trim(); if (trimmedKey === 'DEMO-VALID-KEY') return { valid: true, type: 'demo' }; if (/^[A-Z0-9@#$%&*\\-_+=!?]{28}$/.test(trimmedKey)) return { valid: true, type: 'full' }; return { valid: false, type: 'invalid' }; }",
+        "demoTimer": "function initDemoMode() { const timerDisplay = document.getElementById('demoTimerDisplay'); const timerText = document.getElementById('demoTimerText'); const overlay = document.getElementById('cooldownOverlay'); const submitBtn = document.getElementById('submitBtn'); timerDisplay.classList.remove('hidden'); let countdown = 15; let isRecovering = false; timerText.textContent = 'DEMO MODE: ' + countdown + 's'; showToast('DEMO MODE ACTIVATED', 'warning'); setInterval(function() { countdown--; if (isRecovering) { timerText.textContent = 'RECOVERING: ' + countdown + 's'; timerDisplay.classList.add('urgent'); if (!overlay.classList.contains('show')) { overlay.classList.add('show'); document.querySelector('.cooldown-text').innerHTML = 'Mode Demo: Sedang cooling down...<br><span style=\"font-size:0.85em;opacity:0.8;\">Hubungi admin untuk license key valid</span>'; submitBtn.disabled = true; } } else { timerText.textContent = 'DEMO MODE: ' + countdown + 's'; timerDisplay.classList.remove('urgent'); if (countdown <= 3) timerDisplay.classList.add('urgent'); if (overlay.classList.contains('show')) { overlay.classList.remove('show'); submitBtn.disabled = false; } } if (countdown <= 0) { isRecovering = !isRecovering; countdown = isRecovering ? 60 : 15; showToast(isRecovering ? 'DEMO LIMIT: Recovering...' : 'DEMO READY', isRecovering ? 'error' : 'success'); } }, 1000); }",
+        "toast": "function showToast(message, type) { const container = document.getElementById('toastContainer'); if (!container) return; const toast = document.createElement('div'); toast.className = 'toast ' + (type || 'error'); toast.innerHTML = '<span>' + message + '</span>'; container.appendChild(toast); setTimeout(function() { toast.remove(); }, 4000); }",
+        "init": "function initLicenseCheck() { const licenseKey = (typeof BUYER_CONFIG !== 'undefined' && BUYER_CONFIG.licenseKey) ? BUYER_CONFIG.licenseKey : ''; const result = validateLicense(licenseKey); if (result.valid) { if (result.type === 'demo') { initDemoMode(); } document.getElementById('mainContent').classList.remove('hidden'); document.getElementById('blockScreen').classList.add('hidden'); } else { document.getElementById('blockScreen').classList.remove('hidden'); document.getElementById('mainContent').classList.add('hidden'); } }"
+    },
+    "usage": {
+        "configExample": "var BUYER_CONFIG = { licenseKey: 'DEMO-VALID-KEY', businessName: 'MyHotspot', loginMode: 1, enableNetflix: 0 };",
+        "notes": [
+            "Gunakan 'DEMO-VALID-KEY' untuk mode demo dengan timer 15 detik aktif, 60 detik cooldown",
+            "License key valid harus 28 karakter dengan format: A-Z, 0-9, @#$%&*-_+=!?",
+            "Jika key tidak valid, akan muncul block screen dengan pesan 'Akses Ditolak'",
+            "Tambahkan script validation ke setiap halaman HTML yang perlu dilindungi"
+        ]
+    }
+}

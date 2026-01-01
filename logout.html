@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Logout - Hotspot</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .logout-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-lg);
+            background: var(--info-color);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logout-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .session-summary {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .summary-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        /* Theme Switch CSS */
+        .theme-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-switch::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .theme-switch {
+            background: #6366f1;
+            border-color: #a5b4fc;
+        }
+
+        .dark-mode .theme-switch::after {
+            transform: translateX(20px);
+            background: #fbbf24;
+        }
+
+        .header-left {
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header-actions {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+    </style>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="theme-switch" onclick="toggleDarkMode()" title="Toggle Dark Mode"></div>
+                </div>
+                <div class="header-logo">
+                    <span id="businessName">BADARO.ID</span>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="location.href='kontak.html'" title="Notifikasi">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                        </svg>
+                        <span class="notification-badge">1</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Logout Card -->
+                <div class="card text-center">
+                    <div class="logout-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+                        </svg>
+                    </div>
+
+                    <h1 class="card-subtitle mb-md">Logout Berhasil</h1>
+                    <p class="text-secondary">Anda telah keluar dari jaringan WiFi.</p>
+                    <p class="text-secondary mb-lg">Terima kasih telah menggunakan layanan kami.</p>
+
+                    <!-- Session Summary -->
+                    <div class="session-summary text-left">
+                        <h3 style="margin-bottom: var(--spacing-md); font-size: var(--font-size-md);">Ringkasan Sesi
+                        </h3>
+
+                        <div class="summary-row">
+                            <span class="summary-label">Username</span>
+                            <span class="summary-value">Haris DevLab</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">IP Address</span>
+                            <span class="summary-value">192.168.88.10</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Durasi Sesi</span>
+                            <span class="summary-value">2h 30m 15s</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Data Download</span>
+                            <span class="summary-value">1.5 GB</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Data Upload</span>
+                            <span class="summary-value">500 MB</span>
+                        </div>
+                    </div>
+
+                    <!-- Login Again Button -->
+                    <div class="mt-lg">
+                        <a href="login.html" class="btn btn-primary btn-block btn-lg">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z" />
+                            </svg>
+                            Login Kembali
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Promo Section -->
+                <div class="card">
+                    <h3 class="card-title mb-md">Paket Rekomendasi</h3>
+                    <div class="packages-grid" id="packagesGrid">
+                        <!-- Will be populated by JS -->
+                    </div>
+                    <a href="paket.html" class="btn btn-secondary btn-block mt-md">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" />
+                        </svg>
+                        Lihat Semua Paket
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="footer-divider"></div>
+                    <p id="footerText">Support by PT. Jembatan Data Pangrango</p>
+                    <p id="designerText">Design by BADARO.ID</p>
+                </footer>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-content">
+                <a href="login.html" class="bottom-nav-item active">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                    <span>Beranda</span>
+                </a>
+                <a href="paket.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" />
+                    </svg>
+                    <span>Paket</span>
+                </a>
+                <a href="faq.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+                    </svg>
+                    <span>FAQ</span>
+                </a>
+                <a href="kontak.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
+                    </svg>
+                    <span>Kontak</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof HOTSPOT_CONFIG !== 'undefined') {
+                document.getElementById('businessName').textContent = HOTSPOT_CONFIG.businessName;
+                document.getElementById('footerText').textContent = HOTSPOT_CONFIG.footerText;
+                document.getElementById('designerText').textContent = HOTSPOT_CONFIG.designerText;
+
+                if (HOTSPOT_CONFIG.enableDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+
+                // Populate packages
+                var grid = document.getElementById('packagesGrid');
+                var packages = HOTSPOT_CONFIG.packages.slice(0, 2);
+
+                packages.forEach(function (pkg, index) {
+                    var colorClass = index === 1 ? 'yellow' : 'purple';
+                    var card = document.createElement('div');
+                    card.className = 'package-card';
+                    card.innerHTML =
+                        '<p class="package-name">' + pkg.name + '</p>' +
+                        '<p class="package-price ' + colorClass + '">' + formatRupiah(pkg.price) + '</p>';
+                    card.onclick = function () {
+                        location.href = 'paket.html';
+                    };
+                    grid.appendChild(card);
+                });
+            }
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        }
+    </script>
+</body>
+
+</html>

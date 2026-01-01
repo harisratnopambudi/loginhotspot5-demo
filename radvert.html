@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Advertisement - Hotspot</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .advert-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-color);
+        }
+
+        .advert-header {
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .skip-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .skip-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .skip-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .advert-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .advert-image {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .countdown-timer {
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .countdown-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-sm);
+            color: white;
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: var(--spacing-xl);
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-lg);
+        }
+
+        .promo-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .promo-subtitle {
+            font-size: var(--font-size-md);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="advert-container">
+        <!-- Header with Skip Button -->
+        <div class="advert-header">
+            <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="var(--primary-color)">
+                    <path
+                        d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z" />
+                </svg>
+                <span id="businessName" style="font-weight: 600;">BADARO.ID</span>
+            </div>
+            <button class="skip-btn" id="skipBtn" disabled onclick="redirectToPage()">
+                <span id="skipText">Tunggu 5</span>
+                <svg viewBox="0 0 24 24">
+                    <path d="M5 4h3v16H5zm6 0h3v16h-3zm6 0h3v16h-3z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Advertisement Content -->
+        <div class="advert-content">
+            <!-- Promo Banner -->
+            <div class="promo-banner">
+                <h1 class="promo-title">Promo Spesial!</h1>
+                <p class="promo-subtitle">Nikmati akses internet cepat dengan harga terjangkau</p>
+            </div>
+
+            <!-- Countdown -->
+            <div class="countdown-timer">
+                <div class="countdown-circle" id="countdown">5</div>
+                <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                    Mengalihkan otomatis...
+                </p>
+            </div>
+
+            <!-- Package Preview -->
+            <div style="width: 100%; max-width: 400px; margin-top: var(--spacing-lg);">
+                <div class="packages-grid" id="packagesGrid">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        var countdown = 5;
+        var countdownEl = document.getElementById('countdown');
+        var skipBtn = document.getElementById('skipBtn');
+        var skipText = document.getElementById('skipText');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof HOTSPOT_CONFIG !== 'undefined') {
+                document.getElementById('businessName').textContent = HOTSPOT_CONFIG.businessName;
+
+                if (HOTSPOT_CONFIG.enableDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+
+                // Populate packages
+                var grid = document.getElementById('packagesGrid');
+                var packages = HOTSPOT_CONFIG.packages.slice(0, 2);
+
+                packages.forEach(function (pkg, index) {
+                    var colorClass = index === 1 ? 'yellow' : 'purple';
+                    var card = document.createElement('div');
+                    card.className = 'package-card';
+                    card.innerHTML =
+                        '<p class="package-name">' + pkg.name + '</p>' +
+                        '<p class="package-price ' + colorClass + '">' + formatRupiah(pkg.price) + '</p>';
+                    grid.appendChild(card);
+                });
+            }
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Start countdown
+            startCountdown();
+        });
+
+        function startCountdown() {
+            var timer = setInterval(function () {
+                countdown--;
+                countdownEl.textContent = countdown;
+                skipText.textContent = 'Tunggu ' + countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    skipBtn.disabled = false;
+                    skipText.textContent = 'Lanjutkan';
+
+                    // Auto redirect after countdown
+                    setTimeout(redirectToPage, 1000);
+                }
+            }, 1000);
+        }
+
+        function redirectToPage() {
+            // MikroTik will replace this with actual redirect URL
+            window.location.href = 'status.html';
+        }
+    </script>
+</body>
+
+</html>

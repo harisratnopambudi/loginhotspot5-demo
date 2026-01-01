@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Member - Hotspot</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .member-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .member-hero svg {
+            width: 64px;
+            height: 64px;
+            fill: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .member-hero h1 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .member-hero p {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .benefit-card {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefit-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .benefit-icon.purple {
+            background: var(--primary-color);
+        }
+
+        .benefit-icon.green {
+            background: var(--success-color);
+        }
+
+        .benefit-icon.yellow {
+            background: var(--warning-color);
+        }
+
+        .benefit-icon.blue {
+            background: var(--info-color);
+        }
+
+        .benefit-info h3 {
+            font-size: var(--font-size-md);
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .benefit-info p {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .steps-section {
+            margin: var(--spacing-xl) 0;
+        }
+
+        .steps-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .step-item {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 48px;
+            width: 2px;
+            height: calc(100% - 24px);
+            background: var(--border-color);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+
+        .step-content h4 {
+            font-size: var(--font-size-md);
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .step-content p {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .trial-banner {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .trial-banner h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .trial-banner p {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .trial-banner .btn {
+            background: white;
+            color: #059669;
+        }
+
+        .trial-banner .btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        /* Theme Switch CSS */
+        .theme-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-switch::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .theme-switch {
+            background: #6366f1;
+            border-color: #a5b4fc;
+        }
+
+        .dark-mode .theme-switch::after {
+            transform: translateX(20px);
+            background: #fbbf24;
+        }
+
+        .header-left {
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header-actions {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+    </style>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="theme-switch" onclick="toggleDarkMode()" title="Toggle Dark Mode"></div>
+                </div>
+                <div class="header-logo">
+                    <span id="businessName">BADARO.ID</span>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="location.href='kontak.html'" title="Notifikasi">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                        </svg>
+                        <span class="notification-badge">1</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Member Hero -->
+                <div class="member-hero">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                    </svg>
+                    <h1>Bergabung Jadi Member</h1>
+                    <p>Nikmati berbagai keuntungan eksklusif dengan menjadi member</p>
+                </div>
+
+                <!-- Benefits Section -->
+                <h3 style="margin-bottom: var(--spacing-md); font-size: var(--font-size-lg);">Keuntungan Member</h3>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon purple">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z" />
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Harga Lebih Hemat</h3>
+                        <p>Dapatkan diskon khusus hingga 20% untuk setiap pembelian paket internet</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon green">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z" />
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Prioritas Koneksi</h3>
+                        <p>Koneksi lebih stabil dan cepat dengan prioritas bandwidth untuk member</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon yellow">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" />
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Promo Eksklusif</h3>
+                        <p>Akses ke penawaran spesial dan promo yang hanya tersedia untuk member</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon blue">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Support Prioritas</h3>
+                        <p>Layanan customer support dengan respons lebih cepat untuk member</p>
+                    </div>
+                </div>
+
+                <!-- How to Register -->
+                <div class="steps-section">
+                    <h3 class="steps-title">Cara Menjadi Member</h3>
+
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Hubungi Admin</h4>
+                            <p>Kirim pesan ke admin via WhatsApp untuk mendaftar sebagai member baru</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Isi Data</h4>
+                            <p>Lengkapi data diri Anda seperti nama, nomor telepon, dan email</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Pilih Paket Member</h4>
+                            <p>Pilih paket membership sesuai kebutuhan (Bulanan/Tahunan)</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Selesai!</h4>
+                            <p>Setelah pembayaran dikonfirmasi, Anda resmi menjadi member dan bisa menikmati semua
+                                keuntungan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Trial Banner -->
+                <div class="trial-banner" id="trialBanner">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="white" style="margin-bottom: 8px;">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                    </svg>
+                    <h3>Coba Gratis Dulu!</h3>
+                    <p id="trialDuration">Nikmati akses internet gratis selama 15 menit</p>
+                    <a href="login.html" class="btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Mulai Trial Gratis
+                    </a>
+                </div>
+
+                <!-- CTA -->
+                <div class="card text-center">
+                    <h3 style="margin-bottom: var(--spacing-md);">Tertarik Menjadi Member?</h3>
+                    <p
+                        style="color: var(--text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--spacing-lg);">
+                        Hubungi admin sekarang untuk informasi lebih lanjut tentang paket member
+                    </p>
+                    <a href="kontak.html" class="btn btn-primary btn-block">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        Hubungi Admin
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="footer-divider"></div>
+                    <p id="footerText">Support by PT. Jembatan Data Pangrango</p>
+                    <p id="designerText">Design by BADARO.ID</p>
+                </footer>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-content">
+                <a href="login.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                    <span>Beranda</span>
+                </a>
+                <a href="paket.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" />
+                    </svg>
+                    <span>Paket</span>
+                </a>
+                <a href="faq.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 14h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    <span>FAQ</span>
+                </a>
+                <a href="kontak.html" class="bottom-nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span>Kontak</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof HOTSPOT_CONFIG !== 'undefined') {
+                document.getElementById('businessName').textContent = HOTSPOT_CONFIG.businessName;
+                document.getElementById('footerText').textContent = HOTSPOT_CONFIG.footerText;
+                document.getElementById('designerText').textContent = HOTSPOT_CONFIG.designerText;
+
+                // Trial settings
+                if (!HOTSPOT_CONFIG.enableFreeTrial) {
+                    document.getElementById('trialBanner').style.display = 'none';
+                } else {
+                    document.getElementById('trialDuration').textContent =
+                        'Nikmati akses internet gratis selama ' + HOTSPOT_CONFIG.freeTrialDuration;
+                }
+
+                if (HOTSPOT_CONFIG.enableDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        }
+    </script>
+</body>
+
+</html>
