@@ -26,7 +26,7 @@ var BUYER_CONFIG = {
     inputCase: 1,
 
     // Theme Mode: 1 = Light only, 2 = Dark only, 3 = Toggle (user can switch)
-    themeMode: 2,
+    themeMode: 3,
 
     // Footer
     footerText: "Powered by Haris DevLab",
