@@ -44,8 +44,8 @@
         .status-header {
             background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
             margin: calc(var(--spacing-lg) * -1);
-            margin-bottom: var(--spacing-lg);
-            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-lg);
             border-radius: var(--radius-lg) var(--radius-lg) 0 0;
             color: white;
         }
@@ -56,183 +56,174 @@
         }
 
         .connection-status {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto var(--spacing-lg);
-        }
-
-        .progress-ring {
-            width: 140px;
-            height: 140px;
-        }
-
-        .progress-ring circle {
-            fill: none;
-            stroke-width: 10;
-        }
-
-        .progress-ring .bg {
-            stroke: var(--border-color);
-        }
-
-        .progress-ring .progress {
-            stroke: var(--success-color);
-            stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
-        }
-
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             text-align: center;
-        }
-
-        .progress-text .value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .progress-text .label {
-            font-size: var(--font-size-sm);
-            color: var(--success-color);
-            font-weight: 600;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
             margin-bottom: 24px;
+            padding: 20px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        /* User Info List Style */
+        .info-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 0;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            overflow: hidden;
         }
 
         .info-item {
-            background: var(--bg-secondary);
-            padding: 12px 16px;
-            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-align: left;
-            transition: transform 0.2s;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-card);
+            transition: background 0.2s;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
         }
 
         .info-item:active {
-            transform: scale(0.98);
+            background: var(--bg-secondary);
+        }
+
+        .info-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .info-icon-wrapper {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: white;
-            border-radius: 50%;
-            font-size: 18px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            flex-shrink: 0;
-        }
-
-        .dark-mode .info-icon-wrapper {
-            background: #374151;
-            color: #e5e7eb;
-        }
-
-        .info-content {
-            overflow: hidden;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+            font-size: 16px;
+            color: var(--primary-color);
         }
 
         .info-label {
-            font-size: 10px;
+            font-size: 12px;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            margin: 0;
         }
 
         .info-value {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--text-primary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            text-align: right;
         }
 
+        /* Dashboard Data Stats */
         .data-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-md);
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
         .data-stat {
-            text-align: center;
-            padding: var(--spacing-lg);
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .data-stat:first-child::before {
+            background: var(--success-color);
+        }
+
+        .data-stat:last-child::before {
+            background: var(--info-color);
         }
 
         .data-stat-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto var(--spacing-sm);
-            border-radius: var(--radius-full);
+            width: 40px;
+            height: 40px;
+            margin-bottom: 12px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .data-stat-icon.download {
-            background: rgba(16, 185, 129, 0.15);
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
         }
 
         .data-stat-icon.upload {
-            background: rgba(59, 130, 246, 0.15);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--info-color);
         }
 
         .data-stat-icon svg {
             width: 24px;
             height: 24px;
-        }
-
-        .data-stat-icon.download svg {
-            fill: var(--success-color);
-        }
-
-        .data-stat-icon.upload svg {
-            fill: var(--info-color);
+            fill: currentColor;
         }
 
         .data-stat-value {
-            font-size: var(--font-size-xl);
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .data-stat-label {
-            font-size: var(--font-size-xs);
+            font-size: 12px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -333,73 +324,65 @@
                         </svg>
                     </button>
 
-                    <!-- Connection Status Circle -->
+                    <!-- Connection Status Text -->
                     <div class="connection-status">
-                        <svg class="progress-ring" viewBox="0 0 140 140">
-                            <circle class="bg" cx="70" cy="70" r="60" />
-                            <circle class="progress" cx="70" cy="70" r="60" stroke-dasharray="377"
-                                stroke-dashoffset="0" />
-                        </svg>
-                        <div class="progress-text">
-                            <div class="value">
-                                <svg viewBox="0 0 24 24" width="40" height="40" fill="var(--success-color)">
-                                    <path
-                                        d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z" />
-                                </svg>
-                            </div>
-                            <div class="label">● Online</div>
+                        <div class="status-badge">
+                            ● Tersambung
                         </div>
                     </div>
 
-                    <!-- User Info Grid -->
-                    <div class="info-grid">
+                    <!-- User Info List -->
+                    <div class="info-card">
                         <div class="info-item">
-                            <div class="info-icon-wrapper">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--primary-color)">
-                                    <path
-                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                </svg>
+                            <div class="info-left">
+                                <div class="info-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                        <path
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                </div>
+                                <span class="info-label">Username</span>
                             </div>
-                            <div class="info-content">
-                                <p class="info-label">Username</p>
-                                <p class="info-value">Haris DevLab</p>
-                            </div>
+                            <span class="info-value">Haris DevLab</span>
                         </div>
+
                         <div class="info-item">
-                            <div class="info-icon-wrapper">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="#3B82F6">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                                </svg>
+                            <div class="info-left">
+                                <div class="info-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                        <path
+                                            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                    </svg>
+                                </div>
+                                <span class="info-label">Durasi Online</span>
                             </div>
-                            <div class="info-content">
-                                <p class="info-label">IP Address</p>
-                                <p class="info-value">192.168.88.10</p>
-                            </div>
+                            <span class="info-value">1j 20m 35d</span>
                         </div>
+
                         <div class="info-item">
-                            <div class="info-icon-wrapper">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="#10B981">
-                                    <path
-                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                                </svg>
+                            <div class="info-left">
+                                <div class="info-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                                    </svg>
+                                </div>
+                                <span class="info-label">IP Address</span>
                             </div>
-                            <div class="info-content">
-                                <p class="info-label">Durasi Online</p>
-                                <p class="info-value">2h 30m 15s</p>
-                            </div>
+                            <span class="info-value">192.168.88.254</span>
                         </div>
+
                         <div class="info-item">
-                            <div class="info-icon-wrapper">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="#F59E0B">
-                                    <path
-                                        d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
-                                </svg>
+                            <div class="info-left">
+                                <div class="info-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                        <path
+                                            d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
+                                    </svg>
+                                </div>
+                                <span class="info-label">MAC Address</span>
                             </div>
-                            <div class="info-content">
-                                <p class="info-label">MAC Address</p>
-                                <p class="info-value">AB:CD:EF:12:34:56</p>
-                            </div>
+                            <span class="info-value">66:77:88:99:AA:BB</span>
                         </div>
                     </div>
 
@@ -411,7 +394,7 @@
                                     <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
                                 </svg>
                             </div>
-                            <p class="data-stat-value">1.5 GB</p>
+                            <p class="data-stat-value" id="dataIn" data-bytes="1572864000">1.5 GB</p>
                             <p class="data-stat-label">Download</p>
                         </div>
                         <div class="data-stat">
@@ -420,7 +403,7 @@
                                     <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
                                 </svg>
                             </div>
-                            <p class="data-stat-value">500 MB</p>
+                            <p class="data-stat-value" id="dataOut" data-bytes="524288000">500 MB</p>
                             <p class="data-stat-label">Upload</p>
                         </div>
                     </div>
@@ -428,7 +411,7 @@
 
                 <!-- Action Buttons -->
                 <div class="card">
-                    <a href="logout.html" class="btn btn-danger btn-block mb-md">
+                    <a href="login.html" class="btn btn-danger btn-block mb-md">
                         <svg viewBox="0 0 24 24">
                             <path
                                 d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
@@ -436,7 +419,7 @@
                         Logout
                     </a>
 
-                    <a href="https://google.com" class="btn btn-primary btn-block">
+                    <a href="http://google.com" target="_blank" class="btn btn-primary btn-block">
                         <svg viewBox="0 0 24 24">
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
@@ -494,15 +477,50 @@
                 document.getElementById('footerText').textContent = HOTSPOT_CONFIG.footerText;
                 document.getElementById('designerText').textContent = HOTSPOT_CONFIG.designerText;
 
-                if (HOTSPOT_CONFIG.enableDarkMode) {
+                // Theme Logic
+                const themeMode = HOTSPOT_CONFIG.themeMode;
+                const themeSwitch = document.querySelector('.theme-switch');
+
+                if (themeMode === 1) {
+                    // Light Only
+                    document.body.classList.remove('dark-mode');
+                    if (themeSwitch) themeSwitch.style.display = 'none';
+                } else if (themeMode === 2) {
+                    // Dark Only
                     document.body.classList.add('dark-mode');
+                    if (themeSwitch) themeSwitch.style.display = 'none';
+                } else {
+                    // Toggle Mode (Default)
+                    if (localStorage.getItem('darkMode') === 'true') {
+                        document.body.classList.add('dark-mode');
+                    }
+                    if (themeSwitch) themeSwitch.style.display = 'block';
                 }
             }
 
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-            }
+            // Format Data Stats
+            updateDataStats();
         });
+
+        function updateDataStats() {
+            var dataIn = document.getElementById('dataIn');
+            var dataOut = document.getElementById('dataOut');
+
+            if (dataIn) dataIn.textContent = formatBytes(dataIn.getAttribute('data-bytes'));
+            if (dataOut) dataOut.textContent = formatBytes(dataOut.getAttribute('data-bytes'));
+        }
+
+        function formatBytes(bytes) {
+            if (!bytes || isNaN(bytes)) return '0 B';
+            bytes = parseInt(bytes);
+            if (bytes === 0) return '0 B';
+
+            const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(1024));
+
+            // Return with 1 decimal place if standard unit, e.g. 1.5 MB
+            return parseFloat((bytes / Math.pow(1024, i)).toFixed(1)) + ' ' + sizes[i];
+        }
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');

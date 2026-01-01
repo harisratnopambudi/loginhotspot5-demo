@@ -1,0 +1,24 @@
+==================================================
+PANDUAN KONFIGURASI TEMPLATE (BACA DULU)
+==================================================
+
+Halo! Terima kasih telah menggunakan template ini.
+Untuk mengubah data hotspot (Nama, Harga, Kontak), Anda TIDAK PERLU mengedit file HTML satu per satu.
+
+Cukup edit file bernama: config.js
+
+Caranya:
+1. Buka file "config.js" menggunakan Notepad atau Text Editor.
+2. Ubah bagian-bagian berikut sesuai kebutuhan:
+
+   - licenseKey    : Masukkan License Key valid Anda (sangat penting!)
+   - businessName  : Nama usaha WiFi Anda
+   - adminPhone    : Nomor WA Admin (format 628xxx)
+   - packages      : Daftar paket dan harga yang muncul di banner
+   - footerText    : Teks di bagian bawah
+   - enableDarkMode: "true" untuk aktifkan, "false" untuk matikan
+
+3. Simpan file (Save).
+4. Upload semua file ke folder "hotspot" di MikroTik Anda.
+
+Selamat berjualan!

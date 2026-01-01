@@ -1,0 +1,50 @@
+==================================================
+3 REKOMENDASI JUDUL PRODUK
+==================================================
+1. Template Hotspot MikroTik "GAMER HUD" Premium - Responsive, Dark Mode & Smart Banner
+2. Login Page MikroTik Gaming Edition - Ringan, Modern & Auto Slide Promo
+3. Template Voucheran Rasa Sultan - Desain Gaming Futuristik + Fitur Member Area
+
+==================================================
+DESKRIPSI SINGKAT
+==================================================
+Tingkatkan omzet WiFi Anda dengan template login page bertema Gaming HUD yang futuristik! Desain premium yang siap memanjakan mata pelanggan, dilengkapi fitur canggih seperti Auto Dark Mode, Smart Banner Slide untuk promo, dan halaman khusus Member. Ringan, responsif di semua HP, dan mudah diedit tanpa perlu jago coding.
+
+==================================================
+FULL DESKRIPSI
+==================================================
+Template ini dirancang khusus untuk pengusaha hotspot yang ingin tampil beda dan memberikan pengalaman premium kepada pelanggannya. Mengusung konsep *Gaming HUD Futuristik*, template ini menghadirkan visual kelas atas dengan nuansa neon dan antarmuka modern yang memukau sejak pandangan pertama. Tidak hanya sekadar cantik, desain ini memberikan kesan psikologis bahwa koneksi internet Anda "Cepat, Stabil, dan Professional".
+
+Keunggulan utamanya terletak pada fleksibilitas dan kenyamanan pengguna. Template ini **100% Responsif**, artinya tampilan akan menyesuaikan secara otomatis dan sempurna baik saat dibuka di HP Android murah, iPhone terbaru, maupun Laptop. Codingannya sangat ringkas dan bersih, menjamin loading login page yang super cepat tanpa membebani kinerja CPU Router MikroTik Anda sedikitpun.
+
+Fitur paling memanjakan mata adalah **Smart Slide Banner** dan **Auto Dark Mode**. Banner promosi Anda akan berganti secara otomatis (slideshow), sangat efektif untuk menonjolkan Paket Promo Mingguan atau info maintenance tanpa mengganggu user. Ditambah lagi, template ini pintar mendeteksi setelan HP pelanggan; jika HP mereka mode gelap, login page otomatis berubah jadi Dark Mode yang elegan, begitu juga sebaliknya.
+
+Bagi pebisnis WiFi, fitur **Halaman Khusus Member** adalah ladang cuan baru. Halaman ini didedikasikan untuk mengedukasi user tentang keuntungan berlangganan bulanan atau tahunan, fitur yang terbukti ampuh mengkonversi "user receh" menjadi pelanggan tetap yang loyal.
+
+Terakhir, lupakan ribetnya edit script HTML satu per satu! Template ini dilengkapi sistem **Konfigurasi Terpusat (config.js)**. Anda cukup buka satu file, edit Nama Hotspot, Harga Paket, Kontak Admin, dan Teks Footer di situ, dan otomatis semua halaman akan berubah. Sangat mudah bahkan untuk pemula sekalipun.
+
+==================================================
+6 FITUR UNGGULAN
+==================================================
+1. 🎮 Desain Gaming HUD Futuristik
+   Visual neon modern yang memberikan kesan internet cepat dan stabil.
+
+2. 📱 100% Responsif & Ringan
+   Tampilan sempurna di semua gadget (HP/Laptop) dengan loading super ringan.
+
+3. 📢 Smart Slide Banner
+   Banner promo slideshow otomatis untuk maksimalkan penjualan paket.
+
+4. 🌓 Auto Dark & Light Mode
+   Otomatis mengikuti tema HP pelanggan (Dark/Light) + tombol toggle manual.
+
+5. 💎 Halaman Khusus Member
+   Fitur edukasi member untuk konversi user harian jadi pelanggan bulanan.
+
+6. ⚙️ Konfigurasi Super Mudah
+   Cukup edit 1 file (config.js) untuk ganti semua data (Nama, Harga, Kontak).
+
+==================================================
+PENTING!
+==================================================
+Untuk panduan instalasi dan cara ganti nama/harga paket, WAJIB baca file "BACA DULU.txt" yang disertakan dalam paket ini.
