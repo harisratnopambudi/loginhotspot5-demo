@@ -472,13 +472,25 @@
                         'Nikmati akses internet gratis selama ' + HOTSPOT_CONFIG.freeTrialDuration;
                 }
 
-                if (HOTSPOT_CONFIG.enableDarkMode) {
-                    document.body.classList.add('dark-mode');
-                }
-            }
+                // Theme Logic
+                const themeMode = HOTSPOT_CONFIG.themeMode;
+                const themeSwitch = document.querySelector('.theme-switch');
 
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
+                if (themeMode === 1) {
+                    // Light Only
+                    document.body.classList.remove('dark-mode');
+                    if (themeSwitch) themeSwitch.style.display = 'none';
+                } else if (themeMode === 2) {
+                    // Dark Only
+                    document.body.classList.add('dark-mode');
+                    if (themeSwitch) themeSwitch.style.display = 'none';
+                } else {
+                    // Toggle Mode (Default)
+                    if (localStorage.getItem('darkMode') === 'true') {
+                        document.body.classList.add('dark-mode');
+                    }
+                    if (themeSwitch) themeSwitch.style.display = 'block';
+                }
             }
         });
 

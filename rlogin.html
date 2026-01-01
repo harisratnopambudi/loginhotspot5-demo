@@ -67,10 +67,17 @@
 
     <script src="config.js?v=2"></script>
     <script>
-        if (typeof HOTSPOT_CONFIG !== 'undefined' && HOTSPOT_CONFIG.enableDarkMode) {
-            document.body.classList.add('dark-mode');
-        }
-        if (localStorage.getItem('darkMode') === 'true') {
+        if (typeof HOTSPOT_CONFIG !== 'undefined') {
+            const themeMode = HOTSPOT_CONFIG.themeMode;
+            if (themeMode === 2) {
+                // Dark Only
+                document.body.classList.add('dark-mode');
+            } else if (themeMode === 3 && localStorage.getItem('darkMode') === 'true') {
+                // Toggle Mode and preserved setting
+                document.body.classList.add('dark-mode');
+            }
+            // Light Only (themeMode === 1) does nothing
+        } else if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
         }
     </script>

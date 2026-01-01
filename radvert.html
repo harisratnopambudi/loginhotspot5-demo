@@ -162,8 +162,24 @@
             if (typeof HOTSPOT_CONFIG !== 'undefined') {
                 document.getElementById('businessName').textContent = HOTSPOT_CONFIG.businessName;
 
-                if (HOTSPOT_CONFIG.enableDarkMode) {
+                // Theme Logic
+                const themeMode = HOTSPOT_CONFIG.themeMode;
+                const themeSwitch = document.querySelector('.theme-switch');
+
+                if (themeMode === 1) {
+                    // Light Only
+                    document.body.classList.remove('dark-mode');
+                    if (themeSwitch) themeSwitch.style.display = 'none';
+                } else if (themeMode === 2) {
+                    // Dark Only
                     document.body.classList.add('dark-mode');
+                    if (themeSwitch) themeSwitch.style.display = 'none';
+                } else {
+                    // Toggle Mode (Default)
+                    if (localStorage.getItem('darkMode') === 'true') {
+                        document.body.classList.add('dark-mode');
+                    }
+                    if (themeSwitch) themeSwitch.style.display = 'block';
                 }
 
                 // Populate packages
